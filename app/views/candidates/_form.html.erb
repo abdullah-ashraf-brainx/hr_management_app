@@ -1,0 +1,52 @@
+<%= form_with(model: [@hiring_position, candidate]) do |form| %>
+  <% if candidate.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(candidate.errors.count, "error") %> prohibited this candidate from being saved:</h2>
+
+      <ul>
+        <% candidate.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_area :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :email, style: "display: block" %>
+    <%= form.text_area :email, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :phone, style: "display: block" %>
+    <%= form.text_area :phone, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :university, style: "display: block" %>
+    <%= form.text_area :university, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :experience, style: "display: block" %>
+    <%= form.number_field :experience, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :candidate_cv, style: "display: block" %>
+    <%= form.file_field :candidate_cv, class: 'form-control mb-2' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :hiring_position_id, style: "display: block" %>
+    <%= form.text_field :hiring_position_id, class: 'form-control mb-2' %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -9,7 +9,7 @@
       <h6 class="card-subtitle mb-2 text-muted"><%= hiring_position.location %></h6>
       <p class="card-text"> <%= hiring_position.job_details %> </p>
 
-      <a href="#" class="btn btn-primary">Show Candidates</a>
+      <%= link_to "Show Candidates", hiring_position_candidates_path(hiring_position), class: "btn btn-primary" %>
       <%= link_to "Edit this hiring position", edit_hiring_position_path(hiring_position), class: "btn btn-success mt-2" %> 
       <%= button_to "Destroy this hiring position", @hiring_position, method: :delete, class: "btn btn-danger mt-2" %>
     </div>

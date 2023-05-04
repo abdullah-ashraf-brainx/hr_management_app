@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :hiring_positions
+  
+
+  resources :hiring_positions do
+    resources :candidates
+  end
   devise_for :admin_users, controllers: {
     sessions: 'admin_users/sessions',
     registrations: 'admin_users/registrations',

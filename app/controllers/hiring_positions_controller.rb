@@ -2,6 +2,7 @@ class HiringPositionsController < ApplicationController
   before_action :set_hiring_position, only: %i[ show edit update destroy ]
   before_action :authenticate_admin_user!
 
+
   # GET /hiring_positions or /hiring_positions.json
   def index
     @hiring_positions = HiringPosition.all
