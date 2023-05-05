@@ -1,6 +1,6 @@
 class HiringPositionsController < ApplicationController
   before_action :set_hiring_position, only: %i[ show edit update destroy ]
-  before_action :authenticate_admin_user!
+  before_action :authenticate_user!
 
 
   def index
