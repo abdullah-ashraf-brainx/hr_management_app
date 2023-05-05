@@ -27,8 +27,8 @@ class HiringPositionsController < ApplicationController
 
     respond_to do |format|
       if @hiring_position.save
-        format.html { redirect_to hiring_position_url(@hiring_position), notice: "Hiring position was successfully created." }
-        format.json { render :show, status: :created, location: @hiring_position }
+        format.html { redirect_to hiring_positions_path, alert: "Hiring position was successfully created." }
+        format.json { render :index, status: :created, location: @hiring_position }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @hiring_position.errors, status: :unprocessable_entity }
@@ -40,8 +40,8 @@ class HiringPositionsController < ApplicationController
   def update
     respond_to do |format|
       if @hiring_position.update(hiring_position_params)
-        format.html { redirect_to hiring_position_url(@hiring_position), notice: "Hiring position was successfully updated." }
-        format.json { render :show, status: :ok, location: @hiring_position }
+        format.html { redirect_to hiring_positions_path, alert: "Hiring position was successfully updated." }
+        format.json { render :index, status: :ok, location: @hiring_position }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @hiring_position.errors, status: :unprocessable_entity }
@@ -54,7 +54,7 @@ class HiringPositionsController < ApplicationController
     @hiring_position.destroy
 
     respond_to do |format|
-      format.html { redirect_to hiring_positions_url, notice: "Hiring position was successfully destroyed." }
+      format.html { redirect_to hiring_positions_url, alert: "Hiring position was successfully destroyed." }
       format.json { head :no_content }
     end
   end

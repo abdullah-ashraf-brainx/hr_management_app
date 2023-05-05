@@ -26,7 +26,14 @@
 
   <p>
     <strong>Hiring position:</strong>
-    <%= candidate.hiring_position_id %>
+    <%= @hiring_position.title %>
   </p>
+
+  <p>
+    <strong>CV:</strong>
+    <%= image_tag candidate.candidate_cv.preview(resize_to_fit: [400, 400]) %>
+  </p>
+  
+
 
 </div>
