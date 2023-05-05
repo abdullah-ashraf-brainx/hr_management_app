@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Hiring positions</h1>
+<%= link_to "New hiring position", new_hiring_position_path, class: "btn btn-primary" %>
+
+<div id="hiring_positions" class="d-flex flex-row">
+  <% @hiring_positions.each do |hiring_position| %>
+    <%= render hiring_position %>
+  <% end %>
+</div>
+
+
