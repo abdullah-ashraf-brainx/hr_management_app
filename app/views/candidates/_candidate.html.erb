@@ -31,7 +31,7 @@
 
   <p>
     <strong>CV:</strong>
-    <%= image_tag candidate.candidate_cv.preview(resize_to_fit: [400, 400]) %>
+    <%= link_to 'Open PDF', url_for(@hiring_position.candidate_cv), target: '_blank' %>
   </p>
   
 
