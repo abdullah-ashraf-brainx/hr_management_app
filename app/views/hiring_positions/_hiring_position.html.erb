@@ -7,7 +7,7 @@
     <div class="card-body">
       <h5 class="card-title"><%= hiring_position.title %></h5>
       <h6 class="card-subtitle mb-2 text-muted"><%= hiring_position.location %></h6>
-      <p class="card-text"> <%= hiring_position.job_details %> </p>
+      <p class="card-text"> <%= hiring_position.details %> </p>
 
       <%= link_to "Show Candidates", hiring_position_candidates_path(hiring_position), class: "btn btn-primary" %>
       <%= link_to "Edit this hiring position", edit_hiring_position_path(hiring_position), class: "btn btn-success mt-2" %> 
