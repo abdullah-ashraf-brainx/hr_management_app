@@ -19,6 +19,7 @@ class CandidatesController < ApplicationController
 
     respond_to do |format|
       if @candidate.save
+        @candidate.candidate_cv.attach(params[:candidate][:candidate_cv])
         format.html { redirect_to hiring_position_candidates_path(@hiring_position), notice: "Candidate was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }

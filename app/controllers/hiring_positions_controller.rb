@@ -1,7 +1,6 @@
 class HiringPositionsController < ApplicationController
   before_action :set_hiring_position, only: %i[ show edit update destroy ]
 
-
   def index
     @hiring_positions = HiringPosition.all
   end
