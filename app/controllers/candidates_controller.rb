@@ -40,6 +40,15 @@ class CandidatesController < ApplicationController
     end
   end
 
+  def send_email
+    @candidate = @hiring_position.candidates.find(params[:id])
+    @message = params[:message]
+    
+    CandidateMailer.with(candidate: @candidate, message: @message).send_email.deliver_now
+    
+    redirect_to @candidate, notice: 'Email sent!'
+  end
+
   private
     def get_hiring_position
       @hiring_position = HiringPosition.find(params[:hiring_position_id])
