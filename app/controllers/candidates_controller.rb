@@ -19,7 +19,7 @@ class CandidatesController < ApplicationController
 
     respond_to do |format|
       if @candidate.save
-        format.html { redirect_to hiring_position_candidates_path(@hiring_position), alert: "Candidate was successfully created." }
+        format.html { redirect_to hiring_position_candidates_path(@hiring_position), notice: "Candidate was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -31,7 +31,7 @@ class CandidatesController < ApplicationController
     @candidate.destroy
 
     respond_to do |format|
-      format.html { redirect_to hiring_position_candidates_path, alert: "Candidate was successfully destroyed." }
+      format.html { redirect_to hiring_position_candidates_path, notice: "Candidate was successfully destroyed." }
     end
   end
 

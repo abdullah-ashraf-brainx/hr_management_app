@@ -1,1 +1,6 @@
-<p style="color: green"><%= alert %></p>
+<% if notice %>
+  <p class="alert alert-success" style="width: 50%"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger" style="width: 50%"><%= alert %></p>
+<% end %>
