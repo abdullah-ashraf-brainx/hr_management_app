@@ -7,7 +7,6 @@ class CandidatesController < ApplicationController
   end
 
   def show
-    @hiring_position = HiringPosition.find(params[:hiring_position_id])
     @candidate = @hiring_position.candidates.find(params[:id])
   end
 
@@ -28,7 +27,6 @@ class CandidatesController < ApplicationController
   end
 
   def destroy
-    @hiring_position = HiringPosition.find(params[:hiring_position_id])
     @candidate = @hiring_position.candidates.find(params[:id])
     @candidate.destroy
 
