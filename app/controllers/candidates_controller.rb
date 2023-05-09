@@ -4,6 +4,10 @@ class CandidatesController < ApplicationController
 
   def index
     @candidates = @hiring_position.candidates
+    respond_to do |format|
+      format.html 
+      format.csv {send_data @candidates.to_csv, filename: "Candidates-#{@hiring_position.title}.csv"}
+    end
   end
 
   def show

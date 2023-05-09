@@ -71,6 +71,6 @@ group :test do
   gem "webdrivers"
 end
 
+# for Authentication
 gem 'devise'
 
-gem 'poppler'
