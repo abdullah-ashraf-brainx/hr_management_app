@@ -5,25 +5,22 @@
         <h5 class="modal-title" id="emailModalLabel">New message</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <%= form_with url: send_email_hiring_position_candidate_path(@hiring_position, candidate), method: :post do |form| %>
       <div class="modal-body">
-        <%= form_tag send_email_hiring_position_candidate_path(@hiring_position, candidate), method: :post %>
           <div class="mb-3">
-            <%= label_tag :message, 'Message:' %>
-            <%= text_area_tag :message, nil, class: 'form-control' %>
-            <label for="recipient-name" class="col-form-label">Recipient:</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <%= form.label "email", style: "display: block", class: "col-form-label" %>
+            <%= form.text_field "email", class: 'form-control', id: "email" %>
           </div>
           <div class="mb-3">
-            <label for="message-text" class="col-form-label">Message:</label>
-            <textarea class="form-control" id="message-text"></textarea>
+            <%= form.label "message", style: "display: block", class: "col-form-label" %>
+            <%= form.text_area "message", class: 'form-control', id: "message" %>
           </div>
-        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <%= submit_tag 'Send Email', class: 'btn btn-primary' %>
-        <% end %>
+        <%= form.submit 'Send Email', class: 'btn btn-primary' %>
       </div>
+    <% end %>
     </div>
   </div>
 </div>
@@ -41,9 +38,6 @@
     var button = event.relatedTarget
     // Extract info from data-bs-* attributes
     var recipient = button.getAttribute('data-bs-whatever')
-    // If necessary, you could initiate an AJAX request here
-    // and then do the updating in a callback.
-    //
     // Update the modal's content.
     var modalTitle = emailModal.querySelector('.modal-title')
     var modalBodyInput = emailModal.querySelector('.modal-body input')

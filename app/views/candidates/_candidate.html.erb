@@ -1,39 +1,41 @@
 <div id="<%= dom_id candidate %>">
-  <p>
+  <div>
     <strong>Name:</strong>
     <%= candidate.name %>
-  </p>
-
-  <p>
+  </div>
+  <br>
+  <div>
     <strong>Email:</strong>
     <%= candidate.email %>
-  </p>
-
-  <p>
+  </div>
+  <br>
+  <div>
     <strong>Phone:</strong>
     <%= candidate.phone %>
-  </p>
-
-  <p>
+  </div>
+  <br>
+  <div>
     <strong>University:</strong>
     <%= candidate.university %>
-  </p>
-
-  <p>
+  </div>
+  <br>
+  <div>
     <strong>Experience:</strong>
     <%= candidate.experience %>
-  </p>
-
-  <p>
+  </div>
+  <br>
+  <div>
     <strong>Hiring position:</strong>
     <%= @hiring_position.title %>
-  </p>
-
-  <p>
+  </div>
+  <br>
+  <div>
     <strong>CV:</strong>
-    <%= link_to 'Open CV', url_for(@candidate.candidate_cv), target: '_blank' %>
-  </p>
-  
+    <% if @candidate.cv.attached? %>
+      <%= link_to 'Open CV', url_for(@candidate.cv), target: '_blank' %>
+    <% end %>
+  </div>
+  <br>
 
 
 </div>

@@ -1,11 +1,8 @@
 class HiringPositionsController < ApplicationController
-  before_action :set_hiring_position, only: %i[ show edit update destroy ]
+  before_action :set_hiring_position, only: %i[ edit update destroy ]
 
   def index
     @hiring_positions = HiringPosition.all
-  end
-
-  def show
   end
 
   def new
@@ -18,30 +15,28 @@ class HiringPositionsController < ApplicationController
   def create
     @hiring_position = HiringPosition.new(hiring_position_params)
 
-    respond_to do |format|
-      if @hiring_position.save
-        format.html { redirect_to hiring_positions_path, notice: "Hiring position was successfully created." }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-      end
+    if @hiring_position.save
+      redirect_to hiring_positions_path, notice: "Hiring position was successfully created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   def update
-    respond_to do |format|
-      if @hiring_position.update(hiring_position_params)
-        format.html { redirect_to hiring_positions_path, notice: "Hiring position was successfully updated." }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-      end
+
+    if @hiring_position.update(hiring_position_params)
+      redirect_to hiring_positions_path, notice: "Hiring position was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
+
   end
 
   def destroy
-    @hiring_position.destroy
-
-    respond_to do |format|
-      format.html { redirect_to hiring_positions_url, notice: "Hiring position was successfully destroyed." }
+    if @hiring_position.destroy
+      redirect_to hiring_positions_url, notice: "Hiring position was successfully destroyed."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -52,6 +47,6 @@ class HiringPositionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def hiring_position_params
-      params.require(:hiring_position).permit(:title, :details, :location, :hiring_image)
+      params.require(:hiring_position).permit(:title, :details, :location, :poster_image)
     end
 end

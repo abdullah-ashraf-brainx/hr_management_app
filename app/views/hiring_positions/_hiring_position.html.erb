@@ -1,8 +1,8 @@
 <div id="<%= dom_id hiring_position %>">
 
   <div class="card me-4 mt-2" style="width: 18rem;">
-    <% if hiring_position.hiring_image.attached? %>
-    <%= image_tag hiring_position.hiring_image, class: "card-img-top" %>
+    <% if hiring_position.poster_image.attached? %>
+      <%= image_tag hiring_position.poster_image, class: "card-img-top" %>
     <% end %>
     <div class="card-body">
       <h5 class="card-title"><%= hiring_position.title %></h5>
@@ -10,8 +10,8 @@
       <p class="card-text"> <%= hiring_position.details %> </p>
 
       <%= link_to "Show Candidates", hiring_position_candidates_path(hiring_position), class: "btn btn-primary" %>
-      <%= link_to "Edit this hiring position", edit_hiring_position_path(hiring_position), class: "btn btn-success mt-2" %> 
-      <%= button_to "Destroy this hiring position", hiring_position, method: :delete, class: "btn btn-danger mt-2" %>
+      <%= link_to "Edit", edit_hiring_position_path(hiring_position), class: "btn btn-success" %> 
+      <%= button_to "Destroy", hiring_position, method: :delete, class: "btn btn-danger mt-2" %>
     </div>
   </div>
 

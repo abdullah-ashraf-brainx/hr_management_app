@@ -1,9 +1,9 @@
 class CandidateMailer < ApplicationMailer
     
-    def send_email
-        @candidate = params[:candidate]
+    def send_email_to_candidate
+        @email = params[:email]
         @message = params[:message]
     
-        mail(to: @candidate.email, subject: "Message from Job Recruiter")
+        mail(to: @email, subject: "Message from Job Recruiter")
     end
 end
