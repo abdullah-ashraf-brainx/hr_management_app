@@ -23,7 +23,7 @@
         <td><%= candidate.phone %></td>
         <td><%= candidate.university %></td>
         <td><%= candidate.experience %></td>
-        <td><%= candidate.hiring_position.title %></td>
+        <td><%= @hiring_position.title %></td>
         <td><%= link_to 'Show Candidate', [@hiring_position, candidate], class: "btn btn-primary" %></td>
         <td><%= button_to 'Destroy Candidate', hiring_position_candidate_path(@hiring_position, candidate), method: :delete, class: "btn btn-danger" %></td>
       </tr>
