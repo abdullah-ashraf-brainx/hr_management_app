@@ -11,6 +11,15 @@
   </head>
 
   <body>
+  <div class="container"> 
+  <div class="m-2">
+    <% if user_signed_in? %>
+      <%= button_to "Sign out", destroy_user_session_path, :method => :delete, class: "btn btn-danger float-end" %>
+    <% end %>
+  </div>
+    <%= render "shared/alerts" %>
     <%= yield %>
+  </div>
+
   </body>
 </html>

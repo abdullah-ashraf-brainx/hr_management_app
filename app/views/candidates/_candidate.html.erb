@@ -1,0 +1,37 @@
+<div class="candidate-form" id="<%= dom_id candidate %>">
+  <div>
+    <strong>Name:</strong>
+    <%= candidate.name %>
+  </div>
+  <br>
+  <div>
+    <strong>Email:</strong>
+    <%= candidate.email %>
+  </div>
+  <br>
+  <div>
+    <strong>Phone:</strong>
+    <%= candidate.phone %>
+  </div>
+  <br>
+  <div>
+    <strong>University:</strong>
+    <%= candidate.university %>
+  </div>
+  <br>
+  <div>
+    <strong>Experience:</strong>
+    <%= candidate.experience %>
+  </div>
+  <br>
+  <div>
+    <strong>Hiring position:</strong>
+    <%= @hiring_position.title %>
+  </div>
+  <br>
+  <div>
+    <strong>CV:</strong>
+    <%= link_to 'Open CV', url_for(@candidate.cv), target: '_blank' %>
+  </div>
+  <br>
+</div>

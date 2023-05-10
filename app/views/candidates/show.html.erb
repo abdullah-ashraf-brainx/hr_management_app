@@ -1,0 +1,7 @@
+
+<%= render "candidate", candidate: @candidate %>
+
+<div>
+  <%= button_to "Destroy this candidate", hiring_position_candidate_path(@hiring_position, @candidate), method: :delete, class: "btn btn-danger mb-2" %> 
+  <%= link_to "Back to candidates", hiring_position_candidates_path %>
+</div>
