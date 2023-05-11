@@ -1,3 +1,5 @@
+require 'csv'
+
 class CandidatesController < ApplicationController
   before_action :set_hiring_position
 
@@ -5,7 +7,9 @@ class CandidatesController < ApplicationController
     @candidates = @hiring_position.candidates
     respond_to do |format|
       format.html 
-      format.csv {send_data @candidates.to_csv, filename: "Candidates-#{@hiring_position.title}.csv"}
+      format.csv do
+        send_data to_csv, filename: "Candidates-#{@hiring_position.title}.csv"
+      end
     end
   end
 
@@ -39,6 +43,9 @@ class CandidatesController < ApplicationController
     
   end
 
+  def export
+  end
+
   def send_email
     @email = params[:email]
     @message = params[:message]
@@ -51,6 +58,17 @@ class CandidatesController < ApplicationController
   private
     def set_hiring_position
       @hiring_position = HiringPosition.find(params[:hiring_position_id])
+    end
+
+    def to_csv
+      attributes = %w{name email phone university experience}
+      CSV.generate(headers: true) do |csv|
+        csv << attributes
+  
+        @candidates.each do |candidate|
+          csv << attributes.map {|attr| candidate.send(attr)}
+        end
+      end
     end
 
     # Only allow a list of trusted parameters through.

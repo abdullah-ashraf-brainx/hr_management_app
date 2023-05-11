@@ -47,6 +47,6 @@ class HiringPositionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def hiring_position_params
-      params.require(:hiring_position).permit(:title, :details, :location, :poster_image)
+      params.require(:hiring_position).permit(:title, :details, :location, :image)
     end
 end
