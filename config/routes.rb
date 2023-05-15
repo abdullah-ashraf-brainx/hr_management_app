@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :hiring_positions do
+    resources :candidates do
+      post :send_email, on: :member
+    end
+  end
+  
+  root to: "hiring_positions#index"
 end

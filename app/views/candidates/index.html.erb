@@ -1,0 +1,40 @@
+<div>
+<h1>Candidates</h1>
+<%= link_to "New candidate", new_hiring_position_candidate_path, class: "btn btn-primary" %>
+<%= link_to "Export to Excel", hiring_position_candidates_path(@hiring_position, format: :csv), class: "btn btn-success" %>
+</div>
+
+<table class="table mt-2">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">University</th>
+      <th scope="col">Experience</th>
+      <th scope="col">Hiring Position</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @candidates.each do |candidate| %>
+      <tr>
+        <td><%= candidate.name %></td>
+        <td><%= candidate.email %></td>
+        <td><%= candidate.phone %></td>
+        <td><%= candidate.university %></td>
+        <td><%= candidate.experience %></td>
+        <td><%= @hiring_position.title %></td>
+
+
+        <td><%= link_to 'Show Candidate', [@hiring_position, candidate], class: "btn btn-primary mr-1" %>
+        <button type="button" class="btn btn-primary mr-1" data-bs-toggle="modal" data-bs-target="#emailModal" data-bs-whatever="<%= candidate.email %>">Send Email</button>
+        <%= button_to 'Destroy Candidate', hiring_position_candidate_path(@hiring_position, candidate), method: :delete, class: "btn btn-danger mt-1" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= render "emailModal", candidate: :candidate %>
+
+<%= link_to "Back to Hiring Positions", hiring_positions_path %><br>

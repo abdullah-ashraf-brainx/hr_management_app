@@ -1,0 +1,48 @@
+<div class="modal fade" id="emailModal" tabindex="-1" aria-labelledby="emailModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="emailModalLabel">New message</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <%= form_with url: send_email_hiring_position_candidate_path(@hiring_position, candidate), method: :post do |form| %>
+      <div class="modal-body">
+          <div class="mb-3">
+            <%= form.label "email", style: "display: block", class: "col-form-label" %>
+            <%= form.text_field "email", class: 'form-control', id: "email" %>
+          </div>
+          <div class="mb-3">
+            <%= form.label "message", style: "display: block", class: "col-form-label" %>
+            <%= form.text_area "message", class: 'form-control', id: "message" %>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <%= form.submit 'Send Email', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- Include jQuery and Bootstrap JavaScript libraries -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.3/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.min.js"></script>
+
+
+<%= javascript_tag do %>
+    var emailModal = document.getElementById('emailModal')
+    emailModal.addEventListener('show.bs.modal', function (event) {
+    // Button that triggered the modal
+    var button = event.relatedTarget
+    // Extract info from data-bs-* attributes
+    var recipient = button.getAttribute('data-bs-whatever')
+    // Update the modal's content.
+    var modalTitle = emailModal.querySelector('.modal-title')
+    var modalBodyInput = emailModal.querySelector('.modal-body input')
+
+    modalTitle.textContent = 'New message to ' + recipient
+    modalBodyInput.value = recipient
+    })
+<% end %>

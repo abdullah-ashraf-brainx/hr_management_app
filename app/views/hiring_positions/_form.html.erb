@@ -1,0 +1,37 @@
+<%= form_with(model: hiring_position) do |form| %>
+  <% if hiring_position.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(hiring_position.errors.count, "error") %> prohibited this hiring_position from being saved:</h2>
+
+      <ul>
+        <% hiring_position.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :details, style: "display: block" %>
+    <%= form.text_area :details, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :location, style: "display: block" %>
+    <%= form.text_field :location, class: 'form-control' %>
+  </div>
+
+  <div class="form-group mb-2">
+    <%= form.label :image, style: "display: block" %>
+    <%= form.file_field :image, class: 'form-control' %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

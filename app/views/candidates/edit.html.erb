@@ -1,0 +1,11 @@
+<div>
+  <h1>Editing candidate</h1>
+
+  <%= render "form", candidate: @candidate %>
+
+  <div>
+    <%= link_to "Show this candidate", [@hiring_position, @candidate] %> |
+    <%= link_to "Back to candidates", hiring_position_candidate_path(@hiring_position) %>
+  </div>
+</div>
+
